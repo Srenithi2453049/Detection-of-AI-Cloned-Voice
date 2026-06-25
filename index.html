@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Deep Fake Audio Detector – Hybrid CNN‑LSTM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/icon-192.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-root">
+      <!-- Navigation -->
+      <header class="navbar">
+        <div class="nav-left">
+          <div class="logo-mark">DF</div>
+          <span class="logo-text">Deep Fake Audio Detector</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#analyze">Analyze</a>
+          <a href="#responsible-tech">Responsible Tech</a>
+        </nav>
+        <button class="nav-cta">Analyze Audio</button>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-badge">Deep Fake Audio Detector</div>
+          <h1>
+            Detection of AI Cloned Voice
+            <span class="hero-highlight">Instantly</span>
+          </h1>
+          <p class="hero-subtitle">
+            Upload any audio file and let our
+            <span class="hero-highlight">Hybrid CNN‑LSTM model</span>
+            instantly verify if it’s authentic or AI‑generated.
+          </p>
+          <div class="hero-actions">
+            <a href="#analyze" class="primary-button">Analyze Audio Now</a>
+            <button class="ghost-button" data-scroll-target="#how-it-works">
+              How It Works
+            </button>
+          </div>
+
+          <dl class="hero-metrics">
+            <div class="metric">
+              <dt>20,000+</dt>
+              <dd>Training Samples</dd>
+            </div>
+            <div class="metric">
+              <dt>&lt; 3s</dt>
+              <dd>Analysis Time*</dd>
+            </div>
+            <div class="metric">
+              <dt>High</dt>
+              <dd>Accuracy Rate*</dd>
+            </div>
+          </dl>
+          <p class="metric-note">
+            *Demo UI only. Plug in your own backend model for production use.
+          </p>
+        </div>
+      </section>
+
+      <!-- Analyze Section -->
+      <section id="analyze" class="analyze">
+        <h2>Analyze Your Audio</h2>
+        <p class="section-subtitle">
+          Upload a file or record from your microphone to detect if it’s
+          authentic or AI‑generated.
+        </p>
+
+        <div class="analyze-card">
+          <div class="analyze-tabs">
+            <button class="analyze-tab active" data-tab="upload">
+              Upload File
+            </button>
+            <button class="analyze-tab" data-tab="record">
+              Record Microphone
+            </button>
+          </div>
+
+          <!-- Upload -->
+          <div
+            class="analyze-panel"
+            id="panel-upload"
+            aria-hidden="false"
+          >
+            <label
+              for="audio-upload"
+              class="dropzone"
+              id="upload-dropzone"
+            >
+              <div class="dropzone-icon">⬆</div>
+              <p class="dropzone-title">Drop your audio file here</p>
+              <p class="dropzone-subtitle">or click to browse</p>
+              <p class="dropzone-note">
+                Supports WAV, MP3, M4A (max 60 seconds)
+              </p>
+              <input
+                type="file"
+                id="audio-upload"
+                accept=".wav,.mp3,.m4a,audio/*"
+              />
+            </label>
+          </div>
+
+          <!-- Record -->
+          <div
+            class="analyze-panel hidden"
+            id="panel-record"
+            aria-hidden="true"
+          >
+            <p class="record-help">
+              Click the button below to start recording your voice.
+            </p>
+            <button id="record-btn" class="primary-button wide">
+              Start Recording
+            </button>
+            <p id="record-status" class="record-status"></p>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results" id="results" hidden>
+          <h3>Analysis Result</h3>
+          <p id="result-label" class="result-label"></p>
+          <div class="result-bars">
+            <div class="result-bar">
+              <div class="result-bar-top">
+                <span>Human Voice</span>
+                <span id="prob-auth"></span>
+              </div>
+              <div class="progress">
+                <div id="bar-auth" class="progress-inner authentic"></div>
+              </div>
+            </div>
+            <div class="result-bar">
+              <div class="result-bar-top">
+                <span>AI‑Generated Voice</span>
+                <span id="prob-ai"></span>
+              </div>
+              <div class="progress">
+                <div id="bar-ai" class="progress-inner ai"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-explainer">
+            <h4>Hybrid CNN‑LSTM  Model</h4>
+            <p>
+              The convolutional layers capture short‑term spectral patterns from
+              MFCC features, while stacked LSTM layers model long‑term temporal
+              dependencies in speech. The final dense layer outputs a score that
+              indicates how likely the voice is AI‑generated.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="features">
+        <h2>FEATURES</h2>
+        <p class="section-subtitle">
+          Everything you need to reliably detect AI‑cloned voices
+        </p>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">☁</div>
+            <h3>Cloud‑Based Audio Analysis</h3>
+            <p>
+              Process audio securely in the cloud with scalable,
+              production‑ready infrastructure.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Privacy First</h3>
+            <p>
+              Designed so recordings can be automatically deleted after
+              analysis; nothing is stored or shared.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Lightning‑Fast Detection</h3>
+            <p>
+              Optimized Hybrid CNN‑LSTM pipeline enables near real‑time
+              predictions for short voice clips.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>High Accuracy Model</h3>
+            <p>
+              Trained on 20,000+ human and synthetic samples to capture subtle
+              deepfake artifacts.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>User‑Friendly Interface</h3>
+            <p>
+              Simple drag‑and‑drop upload and microphone recording for fast
+              experimentation.
+            </p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🛡</div>
+            <h3>Secure &amp; Reliable</h3>
+            <p>
+              Built to align with modern security standards to keep sensitive
+              voice data protected.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section id="how-it-works" class="how-it-works">
+        <h2>HOW IT WORKS</h2>
+        <p class="section-subtitle">
+          Three simple steps to verify whether a voice is real or AI‑cloned
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">01</div>
+            <h3>Upload an Audio File</h3>
+            <p>
+              Upload a voice clip in WAV, MP3, or M4A format (up to 60
+              seconds). The system extracts MFCC and spectral features.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <h3>Hybrid CNN‑LSTM Analysis</h3>
+            <p>
+              Convolutional layers scan the spectrogram for artifacts while
+              LSTM layers track temporal patterns typical of cloned voices.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <h3>Instant Results</h3>
+            <p>
+              A detection score and confidence breakdown reveal whether the
+              voice is likely genuine or AI‑generated.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Responsible Technology -->
+      <section id="responsible-tech" class="responsible">
+        <h2>RESPONSIBLE TECHNOLOGY</h2>
+        <p class="section-subtitle">
+          We promote ethical use of AI and prevent harmful misuse
+        </p>
+        <div class="responsible-grid">
+          <article class="responsible-card">
+            <h3>Audio Integrity Awareness</h3>
+            <p>
+              Help users identify manipulated or AI‑generated voices to prevent
+              fraud, impersonation, and misinformation.
+            </p>
+          </article>
+          <article class="responsible-card">
+            <h3>Transparency in AI Detection</h3>
+            <p>
+              Provide clear explanations of why samples are flagged, enabling
+              informed decisions and trust.
+            </p>
+          </article>
+          <article class="responsible-card">
+            <h3>Ethical Use Only</h3>
+            <p>
+              Designed for educational, research, and protective purposes. Any
+              malicious or non‑consensual use is strictly prohibited.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <div class="logo-mark small">DF</div>
+            <div>
+              <p class="footer-title">Deep Fake Audio Detector</p>
+              <p class="footer-subtitle">
+                Powered by Hybrid CNN‑LSTM  Deep Learning Technology
+              </p>
+            </div>
+          </div>
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h4>Quick Links</h4>
+              <a href="#features">Features</a>
+              <a href="#how-it-works">How It Works</a>
+              <a href="#responsible-tech">Responsible Tech</a>
+            </div>
+            <div class="footer-col">
+              <h4>Resources</h4>
+              <a href="#analyze">Live Demo</a>
+              <a href="#">API Reference (Coming Soon)</a>
+              <a href="#">Contact</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            This tool is designed for educational, research, and protective
+            purposes. Use responsibly and in compliance with all applicable
+            laws.
+          </p>
+          <p class="footer-copy">
+            © 2026 Deep Fake Audio Detector. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .catch((err) => console.warn("SW registration failed", err));
+        });
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
+

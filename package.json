@@ -1,0 +1,15 @@
+{
+  "name": "deepfake-audio-detector-frontend",
+  "version": "1.0.0",
+  "description": "Static UI clone of Deep Fake Audio Detector using Hybrid CNN-LSTM (RNN) model concept.",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "deepfake-audio",
+    "cnn-lstm",
+    "frontend"
+  ],
+  "license": "MIT"
+}
+

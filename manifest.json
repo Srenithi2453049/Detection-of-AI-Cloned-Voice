@@ -1,0 +1,23 @@
+{
+  "name": "Deep Fake Audio Detector",
+  "short_name": "DF Detector",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "description": "PWA for detecting AI-cloned (deepfake) audio using a Hybrid CNN-LSTM model with MFCC features.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
